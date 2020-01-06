@@ -21,8 +21,6 @@ def list_projects(event, context):
         #TODO of json format
         #TODO json object with the key 'token'
         #TODO check the token value
-        get_projects()
-        
+        return get_projects()
     else:
-        name = 'World'
-    print('Hello {}!'.format(name))
+        raise RuntimeError('Not found data in event')
