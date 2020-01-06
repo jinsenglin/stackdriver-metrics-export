@@ -28,7 +28,7 @@ def list_projects(event, context):
         data = base64.b64decode(event['data']).decode('utf-8')
         
         jsonMessage = None
-        try
+        try:
             jsonMessage = json.loads(data)
         except TypeError:
             raise TypeError('Error parsing input message')
