@@ -12,15 +12,27 @@ def list_projects(event, context):
          `timestamp` field contains the publish time.
     """
     import base64
+    import json
 
     print("""This Function was triggered by messageId {} published at {}
     """.format(context.event_id, context.timestamp))
 
     if 'data' in event:
-        name = base64.b64decode(event['data']).decode('utf-8')
-        #TODO of json format
-        #TODO json object with the key 'token'
-        #TODO check the token value
-        return get_projects()
+        data = base64.b64decode(event['data']).decode('utf-8')
+        
+        jsonMessage = None
+        try
+            jsonMessage = json.loads(data)
+        except TypeError:
+            raise TypeError('Error parsing input message')
+        
+        if jsonMessage and 'token' in jsonMessage:
+            token = jsonMessage['token']
+            if token == 'TOKEN':
+                return get_projects()
+            else:
+                raise RuntimeError('The token property in the pubsub message does not match, not processing')
+        else:
+            raise ValueError("No token property in the pubsub message, not processing")
     else:
         raise RuntimeError('Not found data in event')
