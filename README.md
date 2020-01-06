@@ -112,7 +112,7 @@ export LIST_PROJECTS_SERVICE_ACCOUNT=gce-list-projects@$PROJECT_ID.iam.gservicea
 gcloud functions deploy list_projects \
 --trigger-topic metric_export_get_project_start \
 --runtime python37 \
---entry-point list_projects_py \
+--entry-point list_projects \
 --service-account=$LIST_PROJECTS_SERVICE_ACCOUNT
 
 # [option 2]
