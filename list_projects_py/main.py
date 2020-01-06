@@ -1,6 +1,15 @@
+# import built-in library
+import base64
+import json
+
+# import custom library
+import config
+
+# define function
 def get_projects():
     pass
 
+# entrypoint
 def list_projects(event, context):
     """Background Cloud Function to be triggered by Pub/Sub.
     Args:
@@ -11,8 +20,6 @@ def list_projects(event, context):
          metadata. The `event_id` field contains the Pub/Sub message ID. The
          `timestamp` field contains the publish time.
     """
-    import base64
-    import json
 
     print("""This Function was triggered by messageId {} published at {}
     """.format(context.event_id, context.timestamp))
@@ -28,7 +35,7 @@ def list_projects(event, context):
         
         if jsonMessage and 'token' in jsonMessage:
             token = jsonMessage['token']
-            if token == 'TOKEN':
+            if token == config.TOKEN:
                 return get_projects()
             else:
                 raise RuntimeError('The token property in the pubsub message does not match, not processing')
