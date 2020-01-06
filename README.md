@@ -107,11 +107,20 @@ gcloud projects add-iam-policy-binding  $PROJECT_ID --member="serviceAccount:$LI
 10. Deploy the list_projects function
 ```sh
 export LIST_PROJECTS_SERVICE_ACCOUNT=gce-list-projects@$PROJECT_ID.iam.gserviceaccount.com 
+
+# [option 1]
 gcloud functions deploy list_projects \
 --trigger-topic metric_export_get_project_start \
---runtime nodejs10 \
+--runtime python37 \
 --entry-point list_projects \
 --service-account=$LIST_PROJECTS_SERVICE_ACCOUNT
+
+# [option 2]
+#gcloud functions deploy list_projects \
+#--trigger-topic metric_export_get_project_start \
+#--runtime nodejs10 \
+#--entry-point list_projects \
+#--service-account=$LIST_PROJECTS_SERVICE_ACCOUNT
 ```
 
 11. Deploy the Cloud Scheduler job
