@@ -1,4 +1,7 @@
-def hello_pubsub(event, context):
+def get_projects():
+    pass
+
+def list_projects(event, context):
     """Background Cloud Function to be triggered by Pub/Sub.
     Args:
          event (dict):  The dictionary with data specific to this type of
@@ -15,6 +18,11 @@ def hello_pubsub(event, context):
 
     if 'data' in event:
         name = base64.b64decode(event['data']).decode('utf-8')
+        #TODO of json format
+        #TODO json object with the key 'token'
+        #TODO check the token value
+        get_projects()
+        
     else:
         name = 'World'
     print('Hello {}!'.format(name))
