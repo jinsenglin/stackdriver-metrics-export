@@ -1,9 +1,15 @@
-# import built-in library
+# import python built-in library
 import base64
 import json
 
+# import google cloud library
+from google.cloud import resource_manager
+
 # import custom library
 import config
+
+# initialize global variable
+client = resource_manager.Client()
 
 # define function
 def get_projects():
