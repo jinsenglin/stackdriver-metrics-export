@@ -43,7 +43,7 @@ def get_projects():
                 
                 # Send the Pub/Sub message
                 pubsubMessageByStr = json.dumps(pubsubMessage).encode('utf-8')
-                messageId = publisher.publish(config.PROJECTS_TOPIC, pubsubMessageStr).result()
+                messageId = publisher.publish(config.PROJECTS_TOPIC, pubsubMessageByStr).result()
                 
                 print("""Published pubsub messageId: {} for project: {}, message {}.
                 """.format(messageId, project.project_id, pubsubMessageByStr))
