@@ -1,21 +1,40 @@
-# import python built-in library
+# Import python built-in library
 import base64
 import json
 
-# import google cloud library
+# Import google cloud library
 from google.cloud import resource_manager
 
-# import custom library
+# Import custom library
 import config
 
-# initialize global variable
+# Initialize global variable
 client = resource_manager.Client()
 
-# define function
+# Define function
 def get_projects():
-    pass
+    try:
+        # Lists all current projects
+        projects = client.list_projects()
+        print("Got past list_projects() call")
+        
+        # Set a uniform endTime for all the resulting messages
+        #
+        # TODO
+        #
+        # sample 2019-11-12T17:58:26.068483Z
+        
+        for project in projects:
+            # Only publish messages for active projects
+            #
+            # TODO
+            #
+            pass
 
-# entrypoint
+    except:
+        raise
+
+# Define entrypoint
 def list_projects(event, context):
     """Background Cloud Function to be triggered by Pub/Sub.
     Args:
