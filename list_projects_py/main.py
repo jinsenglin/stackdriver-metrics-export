@@ -25,6 +25,7 @@ def get_projects():
         # TODO
         #
         # sample 2019-11-12T17:58:26.068483Z
+        endTimeStr = ""
         
         for project in projects:
             
@@ -33,10 +34,16 @@ def get_projects():
                 
                 # Construct a Pub/Sub message
                 print("""About to send Pub/Sub message {}
-                """.format(project.project_id))
+                """.format(project.name))
+                pubsubMessage = {
+                    "token": config.METRIC_EXPORT_PUBSUB_VERIFICATION_TOKEN,
+                    "project_id": project.project_id,
+                    "end_time": endTimeStr
+                }
                 
                 # Send the Pub/Sub message
-                # future = publisher.publish(config.PROJECTS_TOPIC, b'My first message!')
+                pubsubMessageStr = json.dumps(pubsubMessage)
+                # future = publisher.publish(config.PROJECTS_TOPIC, pubsubMessageStr)
                 # messageId = future.result()
                 print("""Published pubsub messageId: {} for project: {}
                 """.format('TBD', project.project_id))
