@@ -36,7 +36,8 @@ def get_projects():
                 """.format(project.project_id))
                 
                 # Send the Pub/Sub message
-                # messageId = publisher.publish(config.PROJECTS_TOPIC, b'My first message!')
+                # future = publisher.publish(config.PROJECTS_TOPIC, b'My first message!')
+                # messageId = future.result()
                 print("""Published pubsub messageId: {} for project: {}
                 """.format('TBD', project.project_id))
 
