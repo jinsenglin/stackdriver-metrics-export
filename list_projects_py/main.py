@@ -25,11 +25,17 @@ def get_projects():
         # sample 2019-11-12T17:58:26.068483Z
         
         for project in projects:
+            
             # Only publish messages for active projects
-            #
-            # TODO
-            #
-            pass
+            if project.status == config.ACTIVE:
+                
+                # Construct a Pub/Sub message
+                print("""About to send Pub/Sub message {}
+                """.format(project.project_id))
+                
+                # Send the Pub/Sub message
+                print("""Published pubsub messageId: {} for project: {}
+                """.format('TBD', project.project_id))
 
     except:
         raise
