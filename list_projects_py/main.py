@@ -35,6 +35,7 @@ def get_projects():
                 # Construct a Pub/Sub message
                 print("""About to send Pub/Sub message {}
                 """.format(project.name))
+                
                 pubsubMessage = {
                     "token": config.METRIC_EXPORT_PUBSUB_VERIFICATION_TOKEN,
                     "project_id": project.project_id,
@@ -44,6 +45,7 @@ def get_projects():
                 # Send the Pub/Sub message
                 pubsubMessageByStr = json.dumps(pubsubMessage).encode('utf-8')
                 messageId = publisher.publish(config.PROJECTS_TOPIC, pubsubMessageStr).result()
+                
                 print("""Published pubsub messageId: {} for project: {}, message {}.
                 """.format(messageId, project.project_id, pubsubMessageByStr))
 
