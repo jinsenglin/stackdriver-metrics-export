@@ -66,19 +66,19 @@ echo "y" | gcloud app deploy
 If you already have a default App Engine app in your project, enter the following command.
 
 ```sh
-export LIST_METRICS_URL=$(gcloud app browse -s list-metrics)
+export LIST_METRICS_URL=$(gcloud app browse -s list-metrics --no-launch-browser)
 ```
 if this was your first App Engine app in your project, enter the following command. 
 
 ```sh
-export LIST_METRICS_URL=$(gcloud app browse)
+export LIST_METRICS_URL=$(gcloud app browse --no-launch-browser)
 ```
 
 Now, get the get_timeseries and write_metrics URLs and create the Pub/Sub topics and subscriptions
 
 ```sh
-export GET_TIMESERIES_URL=$(gcloud app browse -s get-timeseries)
-export WRITE_METRICS_URL=$(gcloud app browse -s write-metrics)
+export GET_TIMESERIES_URL=$(gcloud app browse -s get-timeseries --no-launch-browser)
+export WRITE_METRICS_URL=$(gcloud app browse -s write-metrics --no-launch-browser)
 
 gcloud pubsub topics create metrics_export_start
 gcloud pubsub subscriptions create metrics_export_start_sub --topic metrics_export_start --ack-deadline=60 --message-retention-duration=10m --push-endpoint="$LIST_METRICS_URL/_ah/push-handlers/receive_message"
