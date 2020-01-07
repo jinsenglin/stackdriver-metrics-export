@@ -4,12 +4,14 @@ import json
 
 # Import google cloud library
 from google.cloud import resource_manager
+from google.cloud import pubsub_v1
 
 # Import custom library
 import config
 
 # Initialize global variable
 client = resource_manager.Client()
+publisher = pubsub_v1.PublisherClient()
 
 # Define function
 def get_projects():
@@ -34,6 +36,7 @@ def get_projects():
                 """.format(project.project_id))
                 
                 # Send the Pub/Sub message
+                # messageId = publisher.publish(config.PROJECTS_TOPIC, b'My first message!')
                 print("""Published pubsub messageId: {} for project: {}
                 """.format('TBD', project.project_id))
 
