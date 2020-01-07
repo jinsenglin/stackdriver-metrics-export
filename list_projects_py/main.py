@@ -42,11 +42,11 @@ def get_projects():
                 }
                 
                 # Send the Pub/Sub message
-                pubsubMessageStr = json.dumps(pubsubMessage)
+                pubsubMessageByStr = json.dumps(pubsubMessage).encode('utf-8')
                 # future = publisher.publish(config.PROJECTS_TOPIC, pubsubMessageStr)
                 # messageId = future.result()
-                print("""Published pubsub messageId: {} for project: {}
-                """.format('TBD', project.project_id))
+                print("""Published pubsub messageId: {} for project: {}, message {}.
+                """.format('TBD', project.project_id, pubsubMessageByStr))
 
     except:
         raise
