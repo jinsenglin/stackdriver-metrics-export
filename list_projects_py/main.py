@@ -1,6 +1,7 @@
 # Import python built-in library
 import base64
 import json
+from datetime import datetime
 
 # Import google cloud library
 from google.cloud import resource_manager
@@ -21,11 +22,9 @@ def get_projects():
         print("Got past list_projects() call")
         
         # Set a uniform endTime for all the resulting messages
-        #
-        # TODO
-        #
+        endTimeStr = datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%S.%fZ')
+        
         # sample 2019-11-12T17:58:26.068483Z
-        endTimeStr = ""
         
         for project in projects:
             
