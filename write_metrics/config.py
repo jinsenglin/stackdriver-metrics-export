@@ -19,7 +19,7 @@ PUBSUB_TOPIC="metrics_for_bigquery"
 BIGQUERY_DATASET='metric_export'
 BIGQUERY_TABLE='sd_metrics_export_fin'
 BIGQUERY_STATS_TABLE='sd_metrics_stats'
-WRITE_BQ_STATS_FLAG=True
+WRITE_BQ_STATS_FLAG=False
 
 
 GAUGE="GAUGE"
