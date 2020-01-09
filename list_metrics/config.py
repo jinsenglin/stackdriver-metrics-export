@@ -30,7 +30,7 @@ INCLUSIONS = {
     "include_all": "",
     "metricTypes":[
 #       { "metricType": "compute.googleapis.com/instance/cpu/utilization" },
-#       { "metricType": "compute.googleapis.com/instance/disk/write_ops_count" }
+        { "metricType": "compute.googleapis.com/instance/disk/write_ops_count" }
     ],
     "metricTypeGroups": [
 #        { "metricTypeGroup": "bigquery.googleapis.com" }
@@ -38,7 +38,7 @@ INCLUSIONS = {
 }
 
 EXCLUSIONS = {
-    "exclude_all": "",
+    "exclude_all": "*",
     "metricKinds":[
         {
             "metricKind": "GAUGE", 
