@@ -100,7 +100,6 @@ gce-list-projects \
 9 Assign IAM permissions to the service account
 ```sh
 gcloud projects add-iam-policy-binding  $PROJECT_ID --member="serviceAccount:$LIST_PROJECTS_SERVICE_ACCOUNT"     --role="roles/compute.viewer"
-gcloud projects add-iam-policy-binding  $PROJECT_ID --member="serviceAccount:$LIST_PROJECTS_SERVICE_ACCOUNT"     --role="roles/compute.browser"
 gcloud projects add-iam-policy-binding  $PROJECT_ID --member="serviceAccount:$LIST_PROJECTS_SERVICE_ACCOUNT"     --role="roles/pubsub.publisher"
 ```
 
